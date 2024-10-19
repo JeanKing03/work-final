@@ -4,7 +4,7 @@ const testMigrate = async () => {
   try {
     await new Promise((resolve, reject) => {
       const reset = exec(
-        "sequelize db:migrate:undo && sequelize db:migrate",
+        "sequelize db:migrate:undo:all && sequelize db:migrate",
         { env: process.env },
         (err) => (err ? reject(err) : resolve())
       );
