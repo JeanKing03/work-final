@@ -100,8 +100,6 @@ test("PUT -> 'BASE_URL/:id' should return status code 200, res.body.firstName ==
     .set("authorization", token)
     .send(userUpdate);
 
-  console.log(res.body);
-
   expect(res.status).toBe(200);
   expect(res.body).toBeDefined();
   expect(res.body.firstName).toBe(userUpdate.firstName);
