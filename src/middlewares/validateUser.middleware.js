@@ -7,10 +7,10 @@ const validateUser = catchError(async (req, res, next) => {
   if (!email) return res.status(400).json({ message: "Email Can't Be Null!" });
 
   const user = await getUserServices(email);
-  if (!user) return res.status(403).json({ message: "Invalid Credential!" });
+  if (!user) return res.status(401).json({ message: "Invalid Credential!" });
 
   const isValid = await bcrypt.compare(password, user.password);
-  if (!isValid) return res.status(403).json({ message: "Invalid Credential!" });
+  if (!isValid) return res.status(401).json({ message: "Invalid Credential!" });
   req.body.userLogged = user;
   next();
 });

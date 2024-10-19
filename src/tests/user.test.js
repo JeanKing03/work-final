@@ -50,6 +50,16 @@ test("LOGIN -> 'BASE_URL/login' should return status code 200, res.body.user  an
   expect(res.body.user.email).toBe(user.email);
 });
 
+// !LOGIN
+test("LOGIN -> 'BASE_URL/login' should return status code 401", async () => {
+  const res = await request(app)
+    .post(`${BASE_URL}/login`)
+    .send({ email: "jean@gmail.com", password: "jean123" });
+
+  expect(res.status).toBe(401);
+  expect(res.body.message).toBe("Invalid Credential!");
+});
+
 // GET-LOGGED
 test("GET-ME -> 'BASE_URL/me' should return status code 200 and res.body.email === user.email", async () => {
   const res = await request(app)
