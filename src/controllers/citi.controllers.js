@@ -18,21 +18,21 @@ const getAll = catchError(async (req, res) => {
 });
 
 const getOne = catchError(async (req, res) => {
-  const { id } = req.parmas;
+  const { id } = req.params;
   const result = await getOneServices(id);
   if (!result) return res.sendStatus(404);
   return res.json(result);
 });
 
 const update = catchError(async (req, res) => {
-  const { id } = req.parmas;
+  const { id } = req.params;
   const result = await updateServices(req.body, id);
   if (result[0] === 0) return res.sendStatus(404);
-  return res.json(result);
+  return res.json(result[1]);
 });
 
 const remove = catchError(async (req, res) => {
-  const { id } = req.parmas;
+  const { id } = req.params;
   const result = await removeServices(id);
   if (!result) return res.sendStatus(404);
   return res.sendStatus(204);

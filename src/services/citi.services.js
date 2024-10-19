@@ -17,7 +17,7 @@ const updateServices = async (body, id) => {
 };
 
 const removeServices = async (id) => {
-  return await citi.delete({ where: { id } });
+  return await citi.destroy({ where: { id } });
 };
 
 module.exports = {
